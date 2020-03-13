@@ -1,0 +1,12 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": "airbnb-base",
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-use-before-define": ["off"],
+    "no-unused-vars": ["warn"],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.*js", "**/*.spec.*js"]}]
+  }
+}
