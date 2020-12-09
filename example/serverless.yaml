@@ -9,6 +9,8 @@ provider:
   runtime: nodejs12.x
   region: eu-west-1
   stage: ${opt:stage, 'dev'}
+  apiGateway:
+    shouldStartNameWithService: true
 
 custom:
   mongodb:
@@ -16,3 +18,9 @@ custom:
       dbName: MyDB
 
 functions:
+  get:
+    handler: example/api.get
+    events:
+      - http:
+         method: GET
+         path: /

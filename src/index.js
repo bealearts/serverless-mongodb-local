@@ -49,6 +49,7 @@ class ServerlessMongoDBLocal {
         if (!info) {
           this.log('MongoDB failed to start');
         } else {
+          process.env.MONGODB_URI = info.uri;
           this.log(`MongoDB started with; url: ${info.uri}, dbPath: ${info.dbPath}, storageEngine: ${info.storageEngine}`);
         }
       }

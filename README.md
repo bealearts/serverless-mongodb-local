@@ -47,8 +47,8 @@ Now your local MongoDB database will be automatically started before running ser
 
 # Credit
 
- - Inspired by [serverless-dynamodb-local(https://github.com/99x/serverless-dynamodb-local)]
- - MongoDB install/control provided by [mongodb-memory-server(https://github.com/nodkz/mongodb-memory-server)]
+ - Inspired by [serverless-dynamodb-local](https://github.com/99x/serverless-dynamodb-local)
+ - MongoDB install/control provided by [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server)
 
 # Development
 

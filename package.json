@@ -1,15 +1,22 @@
 {
   "name": "serverless-mongodb-local",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Serverless MongoDB local plugin",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint",
     "lint": "eslint src/**/* example/**/*",
     "start": "sls offline start --config ./example/serverless.yaml --noPrependStageInUrl"
   },
-  "author": "David Beale",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bealearts/serverless-mongodb-local.git"
+  },
   "license": "MIT",
+  "author": {
+    "name": "David Beale",
+    "url": "http://bealearts.co.uk/"
+  },
   "dependencies": {
     "mongodb-memory-server-core": "^6.3.3"
   },
@@ -20,6 +27,7 @@
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "mongodb": "^3.6.3",
     "serverless": "^2.15.0",
     "serverless-mongodb-local": ".",
     "serverless-offline": "^6.8.0"
