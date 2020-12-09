@@ -1,4 +1,4 @@
-# serverless-mongodb-local
+# serverless-mongodb-local ![Build and Test](https://github.com/bealearts/serverless-mongodb-local/workflows/Build%20and%20Test/badge.svg)
 
 Serverless MongoDB local plugin
 
