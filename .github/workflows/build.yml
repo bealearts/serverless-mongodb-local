@@ -22,4 +22,4 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install
-        run: npm ci
+        run: npm i
