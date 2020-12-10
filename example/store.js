@@ -11,7 +11,7 @@ async function getDb() {
   if (dbConnection) return dbConnection;
 
   const client = await MongoClient.connect(
-    process.env.MONGODB_URI,
+    process.env.SLS_MONGODB_URI,
     { useUnifiedTopology: true }
   );
   dbConnection = client.db();

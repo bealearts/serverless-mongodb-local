@@ -49,7 +49,7 @@ class ServerlessMongoDBLocal {
         if (!info) {
           this.log('MongoDB failed to start');
         } else {
-          process.env.MONGODB_URI = info.uri;
+          process.env.SLS_MONGODB_URI = info.uri;
           this.log(`MongoDB started with; url: ${info.uri}, dbPath: ${info.dbPath}, storageEngine: ${info.storageEngine}`);
         }
       }
@@ -61,7 +61,11 @@ class ServerlessMongoDBLocal {
   async stopHandler() {
     if (this.shouldExecute() && !this.options.noStart) {
       this.log('Stopping local database');
-      await this.mongod.stop();
+      try {
+        await this.mongod.stop();
+      } catch (error) {
+        this.log('WARN: MongoDB may not have stopped');
+      }
     } else {
       this.log(`Skipping end: MongoDB Local is not available for stage: ${this.stage}`);
     }

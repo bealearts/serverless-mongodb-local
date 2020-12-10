@@ -32,7 +32,18 @@ custom:
     noStart: true # if you already have a MongoDB running locally
 ```
 
-## Using with serverless-offline plugin
+## In your handlers
+```js
+const { MongoClient } = require('mongodb');
+
+const client = await MongoClient.connect(
+  process.env.SLS_MONGODB_URI,  // Provided as a convenience when using the plugin
+  { useUnifiedTopology: true }
+);
+```
+
+
+# Using with serverless-offline plugin
 
 ```yaml
 plugins:

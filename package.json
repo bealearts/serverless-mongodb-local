@@ -17,6 +17,16 @@
     "name": "David Beale",
     "url": "http://bealearts.co.uk/"
   },
+  "keywords": [
+    "serverless",
+    "serverless plugin",
+    "sls",
+    "plugin",
+    "mongodb",
+    "cosmosdb",
+    "documentdb",
+    "local"
+  ],
   "dependencies": {
     "mongodb-memory-server-core": "^6.3.3"
   },

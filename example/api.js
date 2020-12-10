@@ -11,7 +11,6 @@ exports.get = async function get() {
       body: JSON.stringify(items)
     };
   } catch (error) {
-    console.error(error);
     return {
       statusCode: 500,
       headers: {
