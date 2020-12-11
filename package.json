@@ -1,6 +1,6 @@
 {
   "name": "serverless-mongodb-local",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Serverless MongoDB local plugin",
   "main": "src/index.js",
   "scripts": {
