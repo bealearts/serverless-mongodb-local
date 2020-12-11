@@ -8,13 +8,13 @@ exports.list = async function list() {
 };
 
 async function getDb() {
-  if (dbConnection) return dbConnection;
-
-  const client = await MongoClient.connect(
-    process.env.SLS_MONGODB_URI,
-    { useUnifiedTopology: true }
-  );
-  dbConnection = client.db();
+  if (!dbConnection) {
+    const client = await MongoClient.connect(
+      process.env.SLS_MONGODB_URI,
+      { useUnifiedTopology: true }
+    );
+    dbConnection = client.db();
+  }
 
   return dbConnection;
 }

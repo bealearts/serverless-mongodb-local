@@ -5,7 +5,7 @@ Serverless MongoDB local plugin
 # Features
   - Automatically starts/stops a local MongoDB instance
   - Automatically downloads MongoDB binaries on first use
-  - Can be used as a local equivalent to DocumentDB
+  - Can be used as a local equivalent to DocumentDB/CosmosDB
 
 # Install
 ```shell
@@ -29,7 +29,9 @@ custom:
       dbName: MyDB
       dbPath: ./db
       storageEngine: ephemeralForTest
-    noStart: true # if you already have a MongoDB running locally
+    seed:
+      auto: true
+      dataPath: ./test/data
 ```
 
 ## In your handlers
@@ -41,6 +43,10 @@ const client = await MongoClient.connect(
   { useUnifiedTopology: true }
 );
 ```
+
+# Seeding data
+
+By setting a `mongodb.seed.dataPath` any `.json` files in the folder will be imported as collections. The name of file being the name of the collection. The file should be an array of documents to load into the collection.
 
 
 # Using with serverless-offline plugin
