@@ -59,7 +59,7 @@ plugins:
 
 Make sure that serverless-mongodb-local is above serverless-offline so it will be loaded earlier.
 
-Now your local MongoDB database will be automatically started before running serverless-offline.
+Now your local MongoDB database will be automatically started before running serverless-offline, when using the command `sls offline start`.
 
 
 # Credit
