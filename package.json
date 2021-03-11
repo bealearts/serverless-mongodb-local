@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npm run lint",
-    "test:integration": "jest test/",
+    "test:integration": "NODE_ENV='' jest test/",
     "lint": "eslint src/**/*.js example/**/*.js",
     "start": "sls offline start --config ./example/serverless.yaml --noPrependStageInUrl"
   },
