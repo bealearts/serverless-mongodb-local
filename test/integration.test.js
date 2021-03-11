@@ -38,4 +38,4 @@ test('Starts and seeds a MongoDB instance', async () => {
   expect(result.length).toEqual(3);
 
   await teardown();
-}, 10000);
+}, 30000);
