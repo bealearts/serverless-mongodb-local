@@ -22,4 +22,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install
-        run: npm ci
+        run: npm ci 
+
+      - name: Test
+        run: npm t
+
+      - name: Publish
+        if: startsWith( github.ref, 'refs/tags/v')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
