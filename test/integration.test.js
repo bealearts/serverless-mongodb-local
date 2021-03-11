@@ -9,7 +9,7 @@ const serverlessPath = resolve(
   '../node_modules/serverless/bin/serverless'
 );
 
-async function setup() {
+beforeAll(async () => {
   serverlessProcess = node(serverlessPath, ['offline', 'start', '--config', './example/serverless.yaml',
     '--noPrependStageInUrl', '--httpPort', '8765', '--lambdaPort', '8432'], {
     cwd: './'
@@ -22,20 +22,16 @@ async function setup() {
       }
     });
   });
-}
+}, 30000);
 
-async function teardown() {
+afterAll(async () => {
   await serverlessProcess.cancel();
-}
+});
 
 test('Starts and seeds a MongoDB instance', async () => {
-  await setup();
-
   const response = await fetch('http://localhost:8765');
   expect(response.ok).toEqual(true);
 
   const result = await response.json();
   expect(result.length).toEqual(3);
-
-  await teardown();
 }, 30000);
