@@ -62,6 +62,17 @@ Make sure that serverless-mongodb-local is above serverless-offline so it will b
 Now your local MongoDB database will be automatically started before running serverless-offline, when using the command `sls offline start`.
 
 
+# Usage on the command line
+
+```shell
+# Start the db
+sls mongodb start
+
+# Seed the db
+sls mongodb seed
+```
+
+
 # Credit
 
  - Inspired by [serverless-dynamodb-local](https://github.com/99x/serverless-dynamodb-local)
