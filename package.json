@@ -7,7 +7,8 @@
     "test": "npm run lint",
     "test:integration": "NODE_ENV='' jest test/",
     "lint": "eslint src/**/*.js example/**/*.js",
-    "start": "sls offline start --config ./example/serverless.yaml --noPrependStageInUrl"
+    "start": "sls offline start --config ./example/serverless.yaml --noPrependStageInUrl",
+    "cmd": "sls mongodb start --config ./example/serverless.yaml"
   },
   "repository": {
     "type": "git",

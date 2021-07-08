@@ -10,17 +10,19 @@ class ServerlessMongoDBLocal {
 
     this.commands = {
       mongodb: {
-        start: {
-          lifecycleEvents: ['startHandler'],
-          usage: 'Start local MongoDB'
-        },
-        stop: {
-          lifecycleEvents: ['stopHandler'],
-          usage: 'Stop local MongoDB'
-        },
-        seed: {
-          lifecycleEvents: ['seedHandler'],
-          usage: 'Seed local MongoDB database with data'
+        commands: {
+          start: {
+            lifecycleEvents: ['startHandler'],
+            usage: 'Start local MongoDB'
+          },
+          stop: {
+            lifecycleEvents: ['stopHandler'],
+            usage: 'Stop local MongoDB'
+          },
+          seed: {
+            lifecycleEvents: ['seedHandler'],
+            usage: 'Seed local MongoDB database with data'
+          }
         }
       }
     };
