@@ -53,14 +53,14 @@ class ServerlessMongoDBLocal {
       this.log('Starting local database');
       const { stages, ...mmsOptions } = this.config;
       this.mongod = new MongoMemoryServer(mmsOptions);
-      await this.mongod.getUri();
-      const info = this.mongod.getInstanceInfo();
-      if (!info) {
+      await this.mongod.start();
+      const mongoUri = this.mongod.getUri();
+      if (!mongoUri) {
         this.log('MongoDB failed to start');
       } else {
-        this.log(`MongoDB started with; url: ${info.uri}, dbPath: ${info.dbPath}, storageEngine: ${info.storageEngine}`);
-        process.env.SLS_MONGODB_URI = info.uri;
-
+        this.log(`MongoDB started with; url: ${mongoUri}`);
+        process.env.SLS_MONGODB_URI = mongoUri;
+        
         if (this.config.seed && this.config.seed.auto !== false) {
           await this.seedHandler();
         }
@@ -76,13 +76,13 @@ class ServerlessMongoDBLocal {
       try {
         await this.mongod.stop();
       } catch (error) {
-        if (this.mongod.getInstanceInfo()) this.log('WARN: MongoDB may not have stopped');
+        if (this.mongod.getUri()) this.log('WARN: MongoDB may not have stopped');
       }
     } else {
       this.log(`Skipping end: MongoDB Local is not available for stage: ${this.stage}`);
     }
   }
-
+  
   async seedHandler() {
     if (this.shouldExecute()) {
       this.log('Starting local database seed');
@@ -90,7 +90,7 @@ class ServerlessMongoDBLocal {
       if (!dataPath) {
         this.log('Skipping seeding: "seed.dataPath" not specified');
       } else {
-        const { uri } = this.mongod.getInstanceInfo();
+        const uri  = this.mongod.getUri();
         await seed(dataPath, uri, this.log);
       }
     } else {
