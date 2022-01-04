@@ -60,7 +60,7 @@ class ServerlessMongoDBLocal {
       } else {
         this.log(`MongoDB started with; url: ${mongoUri}`);
         process.env.SLS_MONGODB_URI = mongoUri;
-        
+
         if (this.config.seed && this.config.seed.auto !== false) {
           await this.seedHandler();
         }
@@ -82,7 +82,7 @@ class ServerlessMongoDBLocal {
       this.log(`Skipping end: MongoDB Local is not available for stage: ${this.stage}`);
     }
   }
-  
+
   async seedHandler() {
     if (this.shouldExecute()) {
       this.log('Starting local database seed');
@@ -90,7 +90,7 @@ class ServerlessMongoDBLocal {
       if (!dataPath) {
         this.log('Skipping seeding: "seed.dataPath" not specified');
       } else {
-        const uri  = this.mongod.getUri();
+        const uri = this.mongod.getUri();
         await seed(dataPath, uri, this.log);
       }
     } else {
