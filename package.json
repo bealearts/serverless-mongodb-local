@@ -31,19 +31,19 @@
   ],
   "dependencies": {
     "fs-extra": "^9.1.0",
-    "mongodb": "^3.6.4",
+    "mongodb": "^4.2.2",
     "mongodb-memory-server-core": "^6.9.6"
   },
   "peerDependencies": {
     "serverless": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^7.30.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.23.4",
     "execa": "^5.1.1",
     "jest": "^26.6.3",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.6",
     "serverless": "^2.51.1",
     "serverless-mongodb-local": ".",
     "serverless-offline": "^6.9.0"
