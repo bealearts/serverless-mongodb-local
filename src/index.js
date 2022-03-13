@@ -43,7 +43,9 @@ class ServerlessMongoDBLocal {
 
   shouldExecute() {
     if (this.config.stages) {
-      return this.config.stages.includes(this.stage);
+      return this.config.stages.some(stage => {
+        return this.stage.match(stage).length > 0; 
+      });
     }
     return true;
   }
