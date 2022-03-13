@@ -8,14 +8,14 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: eu-west-1
-  stage: ${opt:stage, 'dev'}
+  stage: ${opt:stage, 'dev-77'}
   apiGateway:
     shouldStartNameWithService: true
 
 custom:
   mongodb:
     stages:
-      - 'dev'
+      - 'dev-\d+'
     instance:
       dbName: MyDB
     seed:
