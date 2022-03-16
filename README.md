@@ -22,7 +22,7 @@ plugins:
 
 custom:
   mongodb:
-    stages: # If you only want to use MongoDB Local in particular stages, declare them here
+    stages: # If you only want to use MongoDB Local in particular stages, declare them here (supports RedEx)
       - dev
     instance: # MongoMemoryServer() options and defaults https://github.com/nodkz/mongodb-memory-server#available-options-for-mongomemoryserver
       port: 1234
