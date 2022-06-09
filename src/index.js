@@ -72,6 +72,10 @@ class ServerlessMongoDBLocal {
 
   async stopHandler() {
     if (this.shouldExecute()) {
+      // Do not stop it in case JEST is running tests
+      // (or serverless was spawned in child process by NodeJS)
+      // It will be automatically killed with the parent process.
+      if (process.env.NODE_ENV === 'test') { return; }
       this.log('Stopping local database');
       try {
         await this.mongod.stop();
