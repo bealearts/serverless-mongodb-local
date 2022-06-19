@@ -43,7 +43,10 @@ class ServerlessMongoDBLocal {
 
   shouldExecute() {
     if (this.config.stages) {
-      return this.config.stages.some((stage) => this.stage.match(new RegExp(stage)).length > 0);
+      return this.config.stages.some((stage) => {
+        const matches = this.stage.match(new RegExp(stage)) || [];
+        return matches.length > 0
+      });
     }
     return true;
   }
