@@ -14,7 +14,7 @@ const startNodeProcess = (yamlFile, stage) => {
   return async () => {
     serverlessProcess = node(serverlessPath, ['offline', 'start', ...stageOpt, '--config', yamlFile,
       '--noPrependStageInUrl', '--httpPort', '8765', '--lambdaPort', '8432'], {
-      cwd: './'
+      cwd: './example'
     });
 
     await new Promise((res) => {
@@ -43,7 +43,7 @@ const testRequest = (success) => {
 describe('MongoDB Integration Tests', () => {
 
   describe('With plain stage match', () => {
-    beforeAll(startNodeProcess('./example/serverless.yaml'), 30000);
+    beforeAll(startNodeProcess('./serverless.yaml'), 30000);
 
     test('Starts and seeds a MongoDB instance', testRequest(true), 30000);
 
@@ -53,7 +53,7 @@ describe('MongoDB Integration Tests', () => {
   });
 
   describe('Without plain stage match', () => {
-    beforeAll(startNodeProcess('./example/serverless.yaml', 'test'), 30000);
+    beforeAll(startNodeProcess('./serverless.yaml', 'test'), 30000);
 
     test('Does not start a MongoDB instance', testRequest(false), 30000);
 
@@ -63,7 +63,7 @@ describe('MongoDB Integration Tests', () => {
   });
 
   describe('With regex stage match', () => {
-    beforeAll(startNodeProcess('./example/serverless-regex.yaml'), 30000);
+    beforeAll(startNodeProcess('./serverless-regex.yaml'), 30000);
 
     test('Starts and seeds a MongoDB instance', testRequest(true), 30000);
 
@@ -73,7 +73,7 @@ describe('MongoDB Integration Tests', () => {
   });
 
   describe('Without regex stage match', () => {
-    beforeAll(startNodeProcess('./example/serverless-regex.yaml', 'test'), 30000);
+    beforeAll(startNodeProcess('./serverless-regex.yaml', 'test'), 30000);
 
     test('Does not start a MongoDB instance', testRequest(false), 30000);
 

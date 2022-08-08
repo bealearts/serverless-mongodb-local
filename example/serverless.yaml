@@ -19,11 +19,11 @@ custom:
     instance:
       dbName: MyDB
     seed:
-      dataPath: example/data
+      dataPath: ./data
 
 functions:
   get:
-    handler: example/api.get
+    handler: api.get
     events:
       - http:
          method: GET
