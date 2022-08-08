@@ -13,7 +13,7 @@ async function getDb() {
       process.env.SLS_MONGODB_URI,
       { useUnifiedTopology: true }
     );
-    dbConnection = client.db();
+    dbConnection = client.db('MyDB');
   }
 
   return dbConnection;

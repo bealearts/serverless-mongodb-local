@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 
 let client;
 
-module.exports = async function seed(dataPath, uri, log) {
+module.exports = async function seed(dataPath, uri, dbName, log) {
   try {
     const files = await fs.readdir(dataPath);
     const jsonfiles = files.filter((file) => path.extname(file) === '.json');
@@ -12,7 +12,7 @@ module.exports = async function seed(dataPath, uri, log) {
       const collection = path.basename(file, '.json');
       try {
         const data = await fs.readJson(path.join(dataPath, file));
-        const db = await getDb(uri);
+        const db = await getDb(uri, dbName);
         const result = await db.collection(collection).insertMany(data);
         log(`Seeded collection "${collection}" with ${result.insertedCount} documents`);
       } catch (error) {
@@ -26,7 +26,7 @@ module.exports = async function seed(dataPath, uri, log) {
   }
 };
 
-async function getDb(uri) {
+async function getDb(uri, dbName = 'test') {
   if (!client) {
     client = await MongoClient.connect(
       uri,
@@ -34,5 +34,5 @@ async function getDb(uri) {
     );
   }
 
-  return client.db();
+  return client.db(dbName);
 }

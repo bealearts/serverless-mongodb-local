@@ -54,8 +54,11 @@ class ServerlessMongoDBLocal {
   async startHandler() {
     if (this.shouldExecute()) {
       this.log('Starting local database');
-      const { stages, ...mmsOptions } = this.config;
-      this.mongod = new MongoMemoryServer(mmsOptions);
+      const { stages, instance, binary } = this.config;
+      this.mongod = new MongoMemoryServer({
+        instance,
+        binary
+      });
       await this.mongod.start();
       const mongoUri = this.mongod.getUri();
       if (!mongoUri) {
@@ -98,7 +101,8 @@ class ServerlessMongoDBLocal {
         this.log('Skipping seeding: "seed.dataPath" not specified');
       } else {
         const uri = this.mongod.getUri();
-        await seed(dataPath, uri, this.log);
+        const dbName = this.config.instance ? this.config.instance.dbName : undefined;
+        await seed(dataPath, uri, dbName, this.log);
       }
     } else {
       this.log(`Skipping seeding: MongoDB Local is not available for stage: ${this.stage}`);
