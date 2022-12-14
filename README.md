@@ -40,7 +40,7 @@ custom:
 const { MongoClient } = require('mongodb');
 
 const client = await MongoClient.connect(
-  process.env.SLS_MONGODB_URI,  // Provided as a convenience when using the plugin (requires --localEnvironment flag to be set on the command line) 
+  process.env.SLS_MONGODB_URI,  // Provided as a convenience when using the plugin (local only, requires --localEnvironment flag to be set on the command line) 
   { useUnifiedTopology: true }
 );
 ```
