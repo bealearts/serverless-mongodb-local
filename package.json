@@ -7,7 +7,7 @@
     "test": "npm run lint",
     "test:integration": "NODE_ENV='' jest test/",
     "lint": "eslint src/**/*.js example/**/*.js",
-    "start": "cd ./example && sls offline start --noPrependStageInUrl",
+    "start": "cd ./example && sls offline start --noPrependStageInUrl --localEnvironment",
     "cmd": "cd ./example && sls mongodb start"
   },
   "repository": {
@@ -44,8 +44,8 @@
     "execa": "^5.1.1",
     "jest": "^26.6.3",
     "node-fetch": "^2.6.7",
-    "serverless": "^2.72.3",
+    "serverless": "^3.25.1",
     "serverless-mongodb-local": ".",
-    "serverless-offline": "^8.5.0"
+    "serverless-offline": "^12.0.2"
   }
 }

@@ -13,7 +13,7 @@ const startNodeProcess = (yamlFile, stage) => {
   const stageOpt = stage ? ['--stage', stage] : [];
   return async () => {
     serverlessProcess = node(serverlessPath, ['offline', 'start', ...stageOpt, '--config', yamlFile,
-      '--noPrependStageInUrl', '--httpPort', '8765', '--lambdaPort', '8432'], {
+      '--noPrependStageInUrl', '--localEnvironment', '--httpPort', '8765', '--lambdaPort', '8432'], {
       cwd: './example'
     });
 

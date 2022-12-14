@@ -54,7 +54,7 @@ class ServerlessMongoDBLocal {
   async startHandler() {
     if (this.shouldExecute()) {
       this.log('Starting local database');
-      const { stages, instance, binary } = this.config;
+      const { instance, binary } = this.config;
       this.mongod = new MongoMemoryServer({
         instance,
         binary

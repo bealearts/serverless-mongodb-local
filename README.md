@@ -40,7 +40,7 @@ custom:
 const { MongoClient } = require('mongodb');
 
 const client = await MongoClient.connect(
-  process.env.SLS_MONGODB_URI,  // Provided as a convenience when using the plugin
+  process.env.SLS_MONGODB_URI,  // Provided as a convenience when using the plugin (requires --localEnvironment flag to be set on the command line) 
   { useUnifiedTopology: true }
 );
 ```
@@ -67,10 +67,10 @@ Now your local MongoDB database will be automatically started before running ser
 
 ```shell
 # Start the db
-sls mongodb start
+sls mongodb start --localEnvironment 
 
 # Seed the db
-sls mongodb seed
+sls mongodb seed --localEnvironment
 ```
 
 
