@@ -33,21 +33,17 @@ const startNodeProcess = (yamlFile, stage) => {
   };
 };
 
-const testRequest = (success) => {
-  return async () => {
-      const response = await fetch('http://localhost:8765');
-      expect(response.ok).toEqual(success);
+const testRequest = (success) => async () => {
+  const response = await fetch('http://localhost:8765');
+  expect(response.ok).toEqual(success);
 
-      if (!success) return;
+  if (!success) return;
 
-      const result = await response.json();
-      expect(result.length).toEqual(3);
-    };
+  const result = await response.json();
+  expect(result.length).toEqual(3);
 };
 
-
 describe('MongoDB Integration Tests', () => {
-
   describe('With plain stage match', () => {
     beforeAll(startNodeProcess('./serverless.yaml'), 30000);
 

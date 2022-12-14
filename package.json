@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint",
     "test:integration": "NODE_ENV='' jest test/",
-    "lint": "eslint src/**/*.js example/**/*.js",
+    "lint": "eslint src/**/*.js example/**/*.js test/**/*.js",
     "start": "cd ./example && sls offline start --noPrependStageInUrl --localEnvironment",
     "cmd": "cd ./example && sls mongodb start"
   },
@@ -30,7 +30,7 @@
     "local"
   ],
   "dependencies": {
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^11.1.0",
     "mongodb": "^4.4.1",
     "mongodb-memory-server-core": "^8.4.1"
   },
@@ -42,7 +42,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.23.4",
     "execa": "^5.1.1",
-    "jest": "^26.6.3",
+    "jest": "^29.3.1",
     "node-fetch": "^2.6.7",
     "serverless": "^3.25.1",
     "serverless-mongodb-local": ".",
