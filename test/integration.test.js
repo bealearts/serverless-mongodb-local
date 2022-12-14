@@ -18,8 +18,14 @@ const startNodeProcess = (yamlFile, stage) => {
     });
 
     await new Promise((res) => {
+      // This is for SLS 2 only
       serverlessProcess.stdout.on('data', (data) => {
         if (String(data).includes('[HTTP] server ready')) {
+          res();
+        }
+      });
+      serverlessProcess.stderr.on('data', (data) => {
+        if (String(data).includes('Server ready:')) {
           res();
         }
       });
