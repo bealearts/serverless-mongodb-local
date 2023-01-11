@@ -12,9 +12,13 @@ module.exports = async function seed(dataPath, uri, dbName, log) {
       const collection = path.basename(file, '.json');
       try {
         let data = await fs.readJson(path.join(dataPath, file));
-        data = data.map(p => {
-          if(p["_id"] && p["_id"]["$oid"]) p["_id"] = ObjectId(p["_id"]["$oid"]);
-          return p;
+        data = data.map(item => {
+          Object.keys(item).forEach(k => {
+            if(item[k] && typeof item[k] == "object" && item[k]["$oid"]){
+              item[k] = ObjectId(item[k]["$oid"]);
+            }
+          })
+          return item;
         });
         const db = await getDb(uri, dbName);
         const result = await db.collection(collection).insertMany(data);
